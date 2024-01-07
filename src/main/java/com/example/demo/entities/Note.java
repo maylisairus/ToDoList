@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class Note {
     private long id;
-    private String name;
+    private String title;
     private String content;
 
-    public Note(String name, String content) {
-        this.name = name;
+    public Note(String title, String content) {
+        this.title = title;
         this.content = content;
     }
 
@@ -20,12 +20,12 @@ public class Note {
         this.id=id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName (String name) {
-        this.name = name;
+    public void setTitle (String title) {
+        this.title = title;
     }
 
     public String getContent() {

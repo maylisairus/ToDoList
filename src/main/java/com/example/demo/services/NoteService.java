@@ -8,11 +8,12 @@ import java.util.*;
 @Service
 public class NoteService {
     private Map<Long, Note> notes = new HashMap<>();
-    List<Note> listAll(){
+    
+    public List<Note> listAll(){
         return notes.values().stream().toList();
     }
-
-    Note add(Note note){
+    
+    public Note add(Note note){
         Random random = new Random();
         long id = random.nextInt();
         note.setId(id);
@@ -20,32 +21,32 @@ public class NoteService {
         return note;
     }
 
-    void deleteById(long id) throws Exception{
+    public void deleteById(long id){
         try {
             notes.remove(id);
         } catch(Exception ex){
-            throw new Exception("Error during deleting note");
+            throw new IllegalArgumentException("Error during deleting note");
         }
     }
 
-    void update(Note note) throws Exception{
+    public void update(Note note) {
         try{
             Note noteToChange = notes.get(note.getId());
             noteToChange.setContent(note.getContent());
-            noteToChange.setName(note.getName());
+            noteToChange.setTitle(note.getTitle());
         }
         catch(Exception ex){
-            throw new Exception ("Error during updating note");
+            throw new IllegalArgumentException ("Error during updating note");
         }
     }
 
-    Note getById(long id)throws Exception{
+    public Note getById(long id){
         try{
 
             return notes.get(id);
         }
         catch(Exception ex){
-            throw new Exception ("Error during getting note");
+            throw new IllegalArgumentException ("Error during getting note");
         }
     }
 
